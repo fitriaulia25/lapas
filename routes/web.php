@@ -5,6 +5,7 @@ use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\AtensiController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Admin\AdminController;
 use App\Exports\AgendaExport;
 use Illuminate\Support\Facades\Auth;
 
@@ -49,9 +50,8 @@ Route::middleware(['auth'])->group(function () {
 });
 
 // Kelompok rute untuk admin
-Route::middleware(['auth', 'role:admin'])->group(function () {
-    Route::get('/admin/super-admins', [UserController::class, 'showSuperAdmins'])->name('admin.superadmins');
-    // Tambahkan rute admin lainnya di sini
+Route::middleware(['auth', 'is_admin'])->group(function () {
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
 });
 
 // Kelompok rute untuk super admin

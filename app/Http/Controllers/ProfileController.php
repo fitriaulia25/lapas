@@ -65,5 +65,11 @@ class ProfileController extends Controller
         // Save the user data
         $user->save();
         return redirect()->route('profile.show')->with('success', 'Profile updated successfully!');
+
+
+    // Save user
+    $user->save();
+
+    return redirect()->back()->with('success', 'Profile updated successfully!');
     }
 }

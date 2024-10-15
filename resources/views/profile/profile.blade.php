@@ -56,11 +56,11 @@
                 @csrf
                 <div class="row mb-3">
                     <div class="col-md-3">
-                        @if($user->photo)
-                            <img src="{{ asset('storage/' . $user->photo) }}" alt="Profile Photo" class="img-fluid img-thumbnail" style="width: 150px; height: 150px;">
-                        @else
-                            <img src="{{ asset('default-profile.png') }}" alt="Default Profile Photo" class="img-fluid img-thumbnail" style="width: 150px; height: 150px;">
-                        @endif
+                    @if($user->photo)
+                    <img src="{{ asset('storage/' . $user->photo) }}?{{ time() }}" alt="Profile Photo" class="img-fluid img-thumbnail" style="width: 150px; height: 150px;">
+                @else
+               <img src="{{ asset('default-profile.png') }}" alt="Default Profile Photo" class="img-fluid img-thumbnail" style="width: 150px; height: 150px;">
+              @endif
                     </div>
                     <div class="col-md-9">
                         <div class="mb-3">
